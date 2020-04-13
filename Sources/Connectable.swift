@@ -121,18 +121,18 @@ extension SignalProtocol {
 
 extension SignalProtocol where Element: LoadingStateProtocol {
     
-    /// Ensure that all observers see the same sequence of elements. Connectable.
-    public func replayValues(limit: Int = Int.max) -> ConnectableSignal<Signal<LoadingState<LoadingValue, LoadingError>, Error>> {
-        if limit == 0 {
-            return ConnectableSignal(source: map { $0.asLoadingState }, subject: PassthroughSubject())
-        } else {
-            return ConnectableSignal(source: map { $0.asLoadingState }, subject: ReplayLoadingValueSubject(bufferSize: limit))
-        }
-    }
-    
-    /// Ensure that all observers see the same sequence of elements.
-    /// Shorthand for `replay(limit).refCount()`.
-    public func shareReplayValues(limit: Int = Int.max) -> Signal<LoadingState<LoadingValue, LoadingError>, Error> {
-        return replayValues(limit: limit).refCount()
-    }
+//    /// Ensure that all observers see the same sequence of elements. Connectable.
+//    public func replayValues(limit: Int = Int.max) -> ConnectableSignal<Signal<LoadingState<LoadingValue, LoadingError>, Error>> {
+//        if limit == 0 {
+//            return ConnectableSignal(source: map { $0.asLoadingState }, subject: PassthroughSubject())
+//        } else {
+//            return ConnectableSignal(source: map { $0.asLoadingState }, subject: ReplayLoadingValueSubject(bufferSize: limit))
+//        }
+//    }
+//
+//    /// Ensure that all observers see the same sequence of elements.
+//    /// Shorthand for `replay(limit).refCount()`.
+//    public func shareReplayValues(limit: Int = Int.max) -> Signal<LoadingState<LoadingValue, LoadingError>, Error> {
+//        return replayValues(limit: limit).refCount()
+//    }
 }
